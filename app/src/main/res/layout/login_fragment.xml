@@ -9,7 +9,7 @@
 		android:orientation="vertical">
 
 		<EditText
-			android:id="@+id/usernameInput"
+			android:id="@+id/loginInput"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"/>
 

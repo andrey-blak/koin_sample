@@ -3,4 +3,5 @@
 
 	<!--Login-->
 	<string name="login_login_button">Login</string>
+	<string name="login_incorrect_credentials_error">Incorrect credentials</string>
 </resources>
