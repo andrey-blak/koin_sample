@@ -1,5 +1,7 @@
 package com.example.pdp.presentation.login
 
+import androidx.lifecycle.SavedStateHandle
+import com.example.pdp.R
 import com.example.pdp.base.CoroutinesTestExtension
 import com.example.pdp.base.InstantExecutorExtension
 import com.example.pdp.data.api.Api
@@ -10,6 +12,8 @@ import kotlinx.coroutines.CompletableDeferred
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
+import org.koin.core.context.startKoin
+import org.koin.dsl.module
 
 @ExtendWith(
 	CoroutinesTestExtension::class,
@@ -17,16 +21,21 @@ import org.junit.jupiter.api.extension.ExtendWith
 )
 class LoginViewModelTest {
 	@Test
-	fun testLogin() {
-		val name = "Name"
+	fun testLoginError() {
 		val api = mockk<Api>()
 		every { api.login(any(), any()) }
-			.returns(CompletableDeferred(LoginResponse.Success(name)))
+			.returns(CompletableDeferred(LoginResponse.Error()))
 
-		val model = LoginViewModel(api)
+		startKoin {
+			modules(module {
+				single<Api> { api }
+			})
+		}
+
+		val model = LoginViewModel(SavedStateHandle())
 
 		model.login("login", "pass")
 
-		Assertions.assertEquals(name, model.getUser().value?.name)
+		Assertions.assertEquals(R.string.login_incorrect_credentials_error, model.getError().value?.messageResId)
 	}
 }

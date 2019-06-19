@@ -5,14 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.example.pdp.databinding.MessagesFragmentBinding
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MessagesFragment : Fragment() {
 	private lateinit var binding: MessagesFragmentBinding
 	private val args: MessagesFragmentArgs by navArgs()
-	private val viewModel by viewModel<MessagesViewModel>()
+	private val viewModel by viewModels<MessagesViewModel>()
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
