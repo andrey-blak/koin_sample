@@ -16,11 +16,11 @@ import org.koin.core.KoinComponent
 class LoginViewModel(
 	private val api: Api
 ) : ViewModel(), KoinComponent {
-	private val user: MutableLiveData<UserData> = MutableLiveData()
+	private val navigateToMessages = LiveEvent<String>()
 	private val error: MutableLiveData<UserError> = LiveEvent()
 
-	fun getUser(): LiveData<UserData> {
-		return user
+	fun getNavigationToMessages(): LiveEvent<String> {
+		return navigateToMessages
 	}
 
 	fun getError(): LiveData<UserError> {
@@ -32,7 +32,7 @@ class LoginViewModel(
 			val response = api.login(login, password).await()
 			when (response) {
 				is LoginResponse.Success -> {
-					user.postValue(UserData(response.name))
+					navigateToMessages.postValue(response.name)
 				}
 				is LoginResponse.Error -> {
 					error.postValue(UserError(R.string.login_incorrect_credentials_error))
@@ -40,10 +40,6 @@ class LoginViewModel(
 			}.exhaustive
 		}
 	}
-
-	data class UserData(
-		val name: String
-	)
 
 	data class UserError(
 		@StringRes val messageResId: Int

@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.example.pdp.databinding.LoginFragmentBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -16,9 +17,9 @@ class LoginFragment : Fragment() {
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
-		viewModel.getUser().observe(this, Observer { user ->
-			// todo implement
-			Toast.makeText(context, "Logged as " + user.name, Toast.LENGTH_SHORT).show()
+		viewModel.getNavigationToMessages().observe(this, Observer { name ->
+			val action = LoginFragmentDirections.actionLoginFragmentToMessagesFragment(name)
+			findNavController().navigate(action)
 		})
 		viewModel.getError().observe(this, Observer { error ->
 			Toast.makeText(context, error.messageResId, Toast.LENGTH_SHORT).show()
