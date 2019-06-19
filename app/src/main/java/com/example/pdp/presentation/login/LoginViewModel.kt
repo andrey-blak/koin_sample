@@ -12,12 +12,12 @@ import com.example.pdp.utils.LiveEvent
 import com.example.pdp.utils.exhaustive
 import kotlinx.coroutines.launch
 import org.koin.core.KoinComponent
-import org.koin.core.inject
 
-class LoginViewModel : ViewModel(), KoinComponent {
+class LoginViewModel(
+	private val api: Api
+) : ViewModel(), KoinComponent {
 	private val user: MutableLiveData<UserData> = MutableLiveData()
 	private val error: MutableLiveData<UserError> = LiveEvent()
-	private val api: Api by inject()
 
 	fun getUser(): LiveData<UserData> {
 		return user

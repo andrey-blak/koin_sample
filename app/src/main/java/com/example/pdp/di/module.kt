@@ -9,5 +9,5 @@ import org.koin.dsl.module
 
 val appModule = module {
 	single<Api> { MockApi(Dispatchers.Default) }
-	viewModel { LoginViewModel() }
+	viewModel { LoginViewModel(get()) }
 }
