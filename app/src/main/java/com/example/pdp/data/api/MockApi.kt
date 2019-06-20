@@ -11,7 +11,7 @@ class MockApi(
 ) : Api {
 	override fun login(login: String, password: String) = GlobalScope.async(coroutineDispatcher) {
 		delay(DELAY_MS)
-		if (login == "asd" && password == "asd") {
+		if (login == "a" && password == "a") {
 			LoginResponse.Success("Smith")
 		} else {
 			LoginResponse.Error()
