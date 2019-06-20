@@ -43,6 +43,7 @@ android {
 }
 
 def koinVersion = '2.0.1'
+def pagingVersion = "2.1.0"
 
 dependencies {
 	implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -57,11 +58,16 @@ dependencies {
 	implementation 'androidx.fragment:fragment-ktx:1.1.0-beta01'
 	implementation 'androidx.collection:collection-ktx:1.1.0'
 	implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.0.0'
+	implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
+	implementation 'androidx.lifecycle:lifecycle-viewmodel-savedstate:1.0.0-alpha01'
+
+	// Android Jetpack Navigation
 	implementation 'androidx.navigation:navigation-runtime-ktx:2.0.0'
 	implementation 'androidx.navigation:navigation-fragment-ktx:2.0.0'
 	implementation 'androidx.navigation:navigation-ui-ktx:2.0.0'
-	implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
-	implementation 'androidx.lifecycle:lifecycle-viewmodel-savedstate:1.0.0-alpha01'
+
+	// Android Jetpack Paging
+	implementation "androidx.paging:paging-runtime-ktx:$pagingVersion"
 
 	// Koin
 	implementation "org.koin:koin-androidx-ext:$koinVersion"
