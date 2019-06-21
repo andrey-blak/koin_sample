@@ -14,7 +14,7 @@ class MessagesAdapter : PagedListAdapter<Message, MessagesAdapter.MessageViewHol
 	}
 
 	override fun onBindViewHolder(holder: MessageViewHolder, position: Int) {
-		val message = getItem(position)!!
+		val message = getItem(position)
 		holder.bind(message)
 	}
 
@@ -25,8 +25,8 @@ class MessagesAdapter : PagedListAdapter<Message, MessagesAdapter.MessageViewHol
 			this.binding = binding
 		}
 
-		fun bind(message: Message) {
-			binding.text.setText(message.message)
+		fun bind(message: Message?) {
+			binding.text.setText(message?.message)
 		}
 	}
 
