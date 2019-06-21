@@ -11,12 +11,16 @@
 		<EditText
 			android:id="@+id/loginInput"
 			android:layout_width="match_parent"
-			android:layout_height="wrap_content"/>
+			android:layout_height="wrap_content"
+			android:maxLines="1"
+			android:inputType="text"/>
 
 		<EditText
 			android:id="@+id/passwordInput"
 			android:layout_width="match_parent"
-			android:layout_height="wrap_content"/>
+			android:layout_height="wrap_content"
+			android:maxLines="1"
+			android:inputType="text"/>
 
 		<Button
 			android:id="@+id/loginButton"
