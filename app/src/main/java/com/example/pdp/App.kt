@@ -1,12 +1,12 @@
 package com.example.pdp
 
-import android.app.Application
+import androidx.multidex.MultiDexApplication
 import com.example.pdp.di.appModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 
-public class App : Application() {
+public class App : MultiDexApplication() {
 	override fun onCreate() {
 		super.onCreate()
 
