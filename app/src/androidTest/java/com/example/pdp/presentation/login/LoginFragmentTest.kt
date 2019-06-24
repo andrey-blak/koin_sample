@@ -10,6 +10,7 @@ import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.example.pdp.R
+import com.example.pdp.base.EspressoTestCoroutineRule
 import com.example.pdp.data.api.Api
 import com.example.pdp.data.api.responses.LoginResponse
 import io.mockk.every
@@ -29,6 +30,9 @@ class LoginFragmentTest : AutoCloseKoinTest() {
 	@JvmField
 	@Rule
 	val Rule = InstantTaskExecutorRule()
+	@JvmField
+	@Rule
+	val espressoTestCoroutineRule = EspressoTestCoroutineRule()
 
 	@Test
 	fun shouldGoToMessagesAfterLogin() {
