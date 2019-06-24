@@ -18,11 +18,16 @@ class LoginViewModel(
 	private val state: SavedStateHandle
 ) : ViewModel(), KoinComponent {
 	private val navigateToMessages = LiveEvent<String>()
+	private val navigateToRegister = LiveEvent<Nothing>()
 	private val error = LiveEvent<UserError>()
 	private val api: Api = get()
 
 	fun getNavigationToMessages(): LiveData<String> {
 		return navigateToMessages
+	}
+
+	fun getNavigationToRegister(): LiveData<Nothing> {
+		return navigateToRegister
 	}
 
 	fun getError(): LiveData<UserError> {
@@ -43,6 +48,10 @@ class LoginViewModel(
 				}
 			}.exhaustive
 		}
+	}
+
+	fun register() {
+		navigateToRegister.call()
 	}
 
 	data class UserError(

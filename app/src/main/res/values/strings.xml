@@ -3,5 +3,9 @@
 
 	<!--Login-->
 	<string name="login_login_button">Login</string>
+	<string name="login_register_button">Register</string>
 	<string name="login_incorrect_credentials_error">Incorrect credentials</string>
+
+	<!--Register-->
+	<string name="register_dialog_title">Register</string>
 </resources>

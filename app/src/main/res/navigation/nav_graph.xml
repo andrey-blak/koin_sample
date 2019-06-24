@@ -10,10 +10,17 @@
 		<action android:id="@+id/action_loginFragment_to_messagesFragment"
 			app:destination="@id/messagesFragment"/>
 	</fragment>
+
 	<fragment android:id="@+id/messagesFragment"
 		android:name="com.example.pdp.presentation.messages.MessagesFragment"
 		android:label="MessagesFragment">
 		<argument android:name="userName"
 			app:argType="string"/>
 	</fragment>
+
+	<dialog android:id="@+id/registerDialog"
+		android:name="com.example.pdp.presentation.register.RegisterDialogFragment"/>
+
+	<action android:id="@+id/action_global_registerDialog"
+		app:destination="@id/registerDialog"/>
 </navigation>

@@ -10,7 +10,9 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.SavedStateVMFactory
 import androidx.navigation.fragment.findNavController
+import com.example.pdp.R
 import com.example.pdp.databinding.LoginFragmentBinding
+import com.example.pdp.utils.observe
 
 class LoginFragment : Fragment() {
 	private lateinit var binding: LoginFragmentBinding
@@ -23,6 +25,9 @@ class LoginFragment : Fragment() {
 			val action = LoginFragmentDirections.actionLoginFragmentToMessagesFragment(name)
 			findNavController().navigate(action)
 		})
+		observe(viewModel.getNavigationToRegister()) {
+			findNavController().navigate(R.id.action_global_registerDialog)
+		}
 		viewModel.getError().observe(this, Observer { error ->
 			Toast.makeText(context, error.messageResId, Toast.LENGTH_SHORT).show()
 		})
@@ -39,6 +44,9 @@ class LoginFragment : Fragment() {
 			val login = binding.loginInput.text.toString()
 			val password = binding.passwordInput.text.toString()
 			viewModel.login(login, password)
+		}
+		binding.registerButton.setOnClickListener {
+			viewModel.register()
 		}
 	}
 }
