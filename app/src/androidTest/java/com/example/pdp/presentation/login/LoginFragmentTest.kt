@@ -29,7 +29,7 @@ import org.koin.test.AutoCloseKoinTest
 class LoginFragmentTest : AutoCloseKoinTest() {
 	@JvmField
 	@Rule
-	val Rule = InstantTaskExecutorRule()
+	val instantTaskExecutorRule = InstantTaskExecutorRule()
 	@JvmField
 	@Rule
 	val espressoTestCoroutineRule = EspressoTestCoroutineRule()
