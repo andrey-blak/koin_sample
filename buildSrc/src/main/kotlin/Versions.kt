@@ -1,1 +1,1 @@
-const val KOTLIN_VERSION = "1.3.31"
+const val KOTLIN_VERSION = "1.3.40"
